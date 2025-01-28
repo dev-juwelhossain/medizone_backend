@@ -12,7 +12,8 @@ class AmbulanceController extends Controller
      */
     public function index()
     {
-        //
+        $ambulance = Ambulance::all();
+        return response()->json($ambulance);
     }
 
     /**
@@ -55,8 +56,12 @@ class AmbulanceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ambulance = Ambulance::find($id);
+        if ($ambulance) {
+            return response()->json($ambulance);
     }
+    return response()->json(['error'=>'Ambulance not found'], 404);
+}
 
     /**
      * Show the form for editing the specified resource.

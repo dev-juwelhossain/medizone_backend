@@ -12,10 +12,18 @@ use Illuminate\Support\Facades\Route;
 // ambulancecontroller router for store data
 
 Route::post('/create_ambulance', [AmbulanceController::class, 'store']);
+Route::get('/ambulance', [AmbulanceController::class, 'index']);
+Route::get('/ambulance/{id}', [AmbulanceController::class, 'show']);
 
+//doctor router for post and get data
 Route::post('/create_doctor', [DoctorsController::class, 'store']);
-
-Route::post('/create_hospital', [HospitalController::class, 'store']);
-
 Route::get('/doctors', [DoctorsController::class,'index']);
+Route::get('/doctors/{id}', [DoctorsController::class, 'show']);
+
+
+//hospital routes
+Route::post('/create_hospital', [HospitalController::class, 'store']);
+Route::get('/hospital', [HospitalController::class,'index']);
+Route::get('/hospital/{id}', [HospitalController::class,'show']);
+
 

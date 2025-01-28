@@ -65,7 +65,13 @@ class DoctorsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $doctors = Doctors::find($id);
+        if ($doctors) {
+            return response()->json($doctors);
+        }
+
+        return response()->json(['error' => 'Doctor not found'], 404);
+    
     }
 
     /**

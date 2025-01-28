@@ -12,7 +12,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        $hospitals = Hospitals::all();
+        return response()->json($hospitals);
     }
 
     /**
@@ -57,9 +58,12 @@ class HospitalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $hospital = Hospitals::find($id);
+        if ($hospital) {
+            return response()->json($hospital);
     }
-
+    return response()->json(['error' => 'Hospital Not found'], status :404);
+    }
     /**
      * Show the form for editing the specified resource.
      */
