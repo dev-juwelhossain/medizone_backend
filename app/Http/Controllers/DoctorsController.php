@@ -12,7 +12,8 @@ class DoctorsController extends Controller
      */
     public function index()
     {
-        //
+       $doctors = Doctors::all();
+       return response()->json($doctors);
     }
 
     /**
@@ -43,6 +44,13 @@ class DoctorsController extends Controller
        $data->e_hospital = $request->e_hospital;
        $data->e_degree = $request->e_degree;
        $data->e_experience_year = $request->e_experience_year;
+       //For Image
+       if ($request->file('doctor_img')) {
+        $file = $request->file('doctor_img');
+        $filename = date('Ymdhi') . $file->getClientOriginalName();
+        $file->move(public_path('admin/doctors'), $filename);
+        $data['doctor_img'] = $filename;
+    }
        $data->save();
 
        return response()->json([

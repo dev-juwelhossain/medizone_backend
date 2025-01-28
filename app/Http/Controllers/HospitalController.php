@@ -29,15 +29,22 @@ class HospitalController extends Controller
     public function store(Request $request)
     {
         $data = new Hospitals();
-        $data->hospital_picture= $request->hospital_picture;
-        $data->name= $request->name;
-        $data->location= $request->location;
-        $data->email= $request->email;
-        $data->phone_number= $request->phone_number;
-        $data->about_hospital= $request->about_hospital;
-        $data->services=$request->services;
+        //$data->hospital_picture = $request->hospital_picture;
+        $data->name = $request->name;
+        $data->location = $request->location;
+        $data->email = $request->email;
+        $data->phone_number = $request->phone_number;
+        $data->about_hospital = $request->about_hospital;
+        $data->services = $request->services;
+        //For Image
+        if ($request->file('hospital_picture')) {
+            $file = $request->file('hospital_picture');
+            $filename = date('Ymdhi') . $file->getClientOriginalName();
+            $file->move(public_path('admin/hospitals'), $filename);
+            $data['hospital_picture'] = $filename;
+        }
         $data->save();
- 
+
         return response()->json([
             'success' => true,
             'message' => 'Hospital created successfully',

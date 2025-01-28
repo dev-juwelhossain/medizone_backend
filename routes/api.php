@@ -17,3 +17,5 @@ Route::post('/create_doctor', [DoctorsController::class, 'store']);
 
 Route::post('/create_hospital', [HospitalController::class, 'store']);
 
+Route::get('/doctors', [DoctorsController::class,'index']);
+

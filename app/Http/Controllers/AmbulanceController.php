@@ -28,20 +28,26 @@ class AmbulanceController extends Controller
      */
     public function store(Request $request)
     {
-       
-       $data = new Ambulance();
-       $data->name = $request->name;
-       $data->ambulance_picture = $request->ambulance_picture;
-       $data->location = $request->location;
-       $data->phone_number = $request->phone_number;
-       $data->save();
 
-       return response()->json([
-           'success' => true,
-           'message' => 'Ambulance created successfully',
-           'data' => $data,
-       ], 201);
+        $data = new Ambulance();
+        $data->name = $request->name;
+        $data->ambulance_picture = $request->ambulance_picture;
+        $data->location = $request->location;
+        $data->phone_number = $request->phone_number;
+        //For Image
+        if ($request->file('ambulance_picture')) {
+            $file = $request->file('ambulance_picture');
+            $filename = date('Ymdhi') . $file->getClientOriginalName();
+            $file->move(public_path('admin/ambulance'), $filename);
+            $data['ambulance_picture'] = $filename;
+        }
+        $data->save();
 
+        return response()->json([
+            'success' => true,
+            'message' => 'Ambulance created successfully',
+            'data' => $data,
+        ], 201);
     }
 
     /**
