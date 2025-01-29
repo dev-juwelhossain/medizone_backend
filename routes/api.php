@@ -3,6 +3,7 @@
 use App\Http\Controllers\AmbulanceController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\SingledocController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,9 @@ Route::post('/create_hospital', [HospitalController::class, 'store']);
 Route::get('/hospital', [HospitalController::class,'index']);
 Route::get('/hospital/{id}', [HospitalController::class,'show']);
 
+//single doctor routes
+
+Route::post('/create_singledoc', [SingledocController::class, 'store']);
+Route::get('/singledoc', [SingledocController::class,'index']);
+Route::get('/singledoc/{id}', [SingledocController::class,'show']);
 

@@ -30,6 +30,7 @@ class DoctorsController extends Controller
     public function store(Request $request)
     {
         $data = new Doctors();
+        
        $data->name = $request->name;
        $data->degree = $request->degree;
        $data->specialized = $request->specialized;
@@ -71,7 +72,7 @@ class DoctorsController extends Controller
         }
 
         return response()->json(['error' => 'Doctor not found'], 404);
-    
+
     }
 
     /**
