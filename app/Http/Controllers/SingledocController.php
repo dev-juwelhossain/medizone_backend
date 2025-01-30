@@ -29,16 +29,28 @@ class SingledocController extends Controller
     public function store(Request $request)
     {
         $data = new Singledoc();
+
         $data->s_doc_name = $request->s_doc_name;
         $data->s_doc_location = $request->s_doc_location;
         $data->s_doc_hospital = $request->s_doc_hospital;
         $data->s_doc_position = $request->s_doc_position;
         $data->s_doc_experience = $request->s_doc_experience;
         $data->s_doc_phonenumber = $request->s_doc_phonenumber;
+        $data->s_doc_specialized = $request->s_doc_specialized;
 
-        return response ()->json([
-            'success'
-        ]);
+        if ($request->file('s_doc_picture')) {
+            $file = $request->file('s_doc_picture');
+            $filename = date('Ymdhi') . $file->getClientOriginalName();
+            $file->move(public_path('admin/singledoc'), $filename);
+            $data['s_doc_picture'] = $filename;
+        }
+
+        $data->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Doctor created successfully',
+            'data' => $data,
+        ], 201);
     }
 
     /**
