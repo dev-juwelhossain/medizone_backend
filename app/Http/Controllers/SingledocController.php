@@ -12,7 +12,8 @@ class SingledocController extends Controller
      */
     public function index()
     {
-        //
+       $singledoc = Singledoc::all();
+       return response()->json($singledoc);
     }
 
     /**
@@ -58,7 +59,11 @@ class SingledocController extends Controller
      */
     public function show(string $id)
     {
-        //
+       $singledoc = Singledoc::find($id);
+       if ($singledoc) {
+        return response()->json($singledoc);
+       }
+       return response()->json(['error' => 'Doctor not found'],404);
     }
 
     /**
