@@ -13,7 +13,8 @@ class Singledoc extends Model
         's_doc_hospital',
         's_doc_position',
         's_doc_experience',
-        's_doc_phonenumber',
+        
         's_doc_specialized',
+        's_doc_degree',
     ];
 }

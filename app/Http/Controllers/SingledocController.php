@@ -36,8 +36,9 @@ class SingledocController extends Controller
         $data->s_doc_hospital = $request->s_doc_hospital;
         $data->s_doc_position = $request->s_doc_position;
         $data->s_doc_experience = $request->s_doc_experience;
-        $data->s_doc_phonenumber = $request->s_doc_phonenumber;
+        
         $data->s_doc_specialized = $request->s_doc_specialized;
+        $data->s_doc_degree = $request->s_doc_degree;
 
         if ($request->file('s_doc_picture')) {
             $file = $request->file('s_doc_picture');

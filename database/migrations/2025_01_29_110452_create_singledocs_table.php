@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('s_doc_location')->nullable();
             $table->string('s_doc_position')->nullable();
             $table->string('s_doc_experience')->nullable();
-            $table->string('s_doc_phonenumber')->nullable();
+           
             $table->string('s_doc_specialized')->nullable();
+            $table->string('s_doc_degree')->nullable();
 
             $table->string('s_doc_hospital')->nullable();
             $table->timestamps();
