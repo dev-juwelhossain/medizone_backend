@@ -22,7 +22,7 @@ return [
     'allowed_origins' => [
         env('FRONTEND_URL', 'http://localhost:3000'),
         'http://localhost:5173',
-        'http://localhost:5174','https://medizone.ruddro.my.id/','https://medizone-dashboard.netlify.app'
+        'http://localhost:5174','https://medizone.ruddro.my.id/','https://medizone-dashboard.netlify/', 'https://medizone25.netlify.app/'
     ],
 
     'allowed_origins_patterns' => [],
